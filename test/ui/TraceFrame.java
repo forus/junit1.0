@@ -195,7 +195,7 @@ public static void main(java.lang.String[] args) {
             Class aCloserClass = Class.forName("uvm.abt.edit.WindowCloser");
             Class parmTypes[] = { java.awt.Window.class };
             Object parms[] = { aTraceFrame };
-            java.lang.reflect.Constructor aCtor = aCloserClass.getConstructor(parmTypes);
+            java.lang.reflect.Constructor<? extends Object> aCtor = aCloserClass.getConstructor(parmTypes);
             aCtor.newInstance(parms);
         } catch (java.lang.Throwable exc) {};
         aTraceFrame.setVisible(true);

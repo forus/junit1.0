@@ -34,8 +34,8 @@ class TextTestResult extends TestResult {
                 System.out.println("There were "+testErrors()+" errors:");
 
             int i= 1;
-            for (Enumeration e= errors(); e.hasMoreElements(); i++) {
-                TestFailure failure= (TestFailure)e.nextElement();
+            for (Enumeration<TestFailure> e = errors(); e.hasMoreElements(); i++) {
+                TestFailure failure= e.nextElement();
                 System.out.println(i+") "+failure.failedTest());
                 failure.thrownException().printStackTrace();
             }
@@ -53,8 +53,8 @@ class TextTestResult extends TestResult {
                 System.out.println("There were "+testFailures()+" failures:");
 
             int i= 1;
-            for (Enumeration e= failures(); e.hasMoreElements(); i++) {
-                TestFailure failure= (TestFailure)e.nextElement();
+            for (Enumeration<TestFailure> e = failures(); e.hasMoreElements(); i++) {
+                TestFailure failure= e.nextElement();
                 System.out.print(i+") "+failure.failedTest());
                 Throwable t= failure.thrownException();
                 if (t.getMessage() != null)

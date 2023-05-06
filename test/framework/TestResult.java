@@ -14,15 +14,15 @@ import java.util.Vector;
  * @see Test
  */
 public class TestResult extends Object {
-    protected Vector fFailures;
-    protected Vector fErrors;
+    protected Vector<TestFailure> fFailures;
+    protected Vector<TestFailure> fErrors;
     protected int fRunTests;
     private boolean fStop;
 
 
     public TestResult() {
-        fFailures= new Vector(10);
-        fErrors= new Vector(10);
+        fFailures= new Vector<TestFailure>(10);
+        fErrors= new Vector<>(10);
         fRunTests= 0;
         fStop= false;
     }
@@ -87,14 +87,14 @@ public class TestResult extends Object {
     /**
      * Returns an Enumeration for the failures
      */
-    public synchronized Enumeration failures() {
+    public synchronized Enumeration<TestFailure> failures() {
         return fFailures.elements();
     }
 
     /**
      * Returns an Enumeration for the errors
      */
-    public synchronized Enumeration errors() {
+    public synchronized Enumeration<TestFailure> errors() {
         return fErrors.elements();
     }
 

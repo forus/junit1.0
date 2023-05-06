@@ -26,7 +26,7 @@ import java.util.Vector;
  */
 
 public class TestRunner extends java.awt.Frame implements java.awt.event.ActionListener, java.awt.event.ItemListener, java.awt.event.MouseListener, java.awt.event.TextListener, java.awt.event.WindowListener, java.lang.Runnable {
-    private java.util.Vector fExceptions;
+    private Vector<Throwable> fExceptions;
     private Thread fRunner = null;
     private TestResult fTestResult = null;
     private Test fTestSuite = null;
@@ -1086,7 +1086,7 @@ public static void main(java.lang.String[] args) {
             Class aCloserClass = Class.forName("uvm.abt.edit.WindowCloser");
             Class parmTypes[] = { java.awt.Window.class };
             Object parms[] = { aTestRunner };
-            java.lang.reflect.Constructor aCtor = aCloserClass.getConstructor(parmTypes);
+            java.lang.reflect.Constructor<? extends Object> aCtor = aCloserClass.getConstructor(parmTypes);
             aCtor.newInstance(parms);
         } catch (java.lang.Throwable exc) {};
         aTestRunner.move(200, 200);
@@ -1176,7 +1176,7 @@ private void reset ( ) {
     clearStatus();
     getStatusIndicator().reset();
     resetFailureList();
-    fExceptions= new Vector(10);
+    fExceptions= new Vector<Throwable>(10);
     return;
 }
 /**
@@ -1307,7 +1307,7 @@ private void showErrorTrace ( ) {
     if (index == -1)
         return;
 
-    Throwable t= (Throwable)fExceptions.elementAt(index);
+    Throwable t= fExceptions.elementAt(index);
     if (fTraceFrame == null) {
         fTraceFrame = new TraceFrame();
         fTraceFrame.move(100, 100);

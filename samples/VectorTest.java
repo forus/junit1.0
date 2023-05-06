@@ -12,7 +12,7 @@ import java.util.Vector;
  */
 public class VectorTest extends TestCase {
     protected Vector fEmpty;
-    protected Vector fFull;
+    protected Vector<Integer> fFull;
 
     public VectorTest(String name) {
         super(name);
@@ -20,7 +20,7 @@ public class VectorTest extends TestCase {
 
     protected void setUp() {
         fEmpty= new Vector();
-        fFull= new Vector();
+        fFull= new Vector<>();
         fFull.addElement(new Integer(1));
         fFull.addElement(new Integer(2));
         fFull.addElement(new Integer(3));
@@ -32,11 +32,11 @@ public class VectorTest extends TestCase {
     }
 
     public void testElementAt() {
-        Integer i= (Integer)fFull.elementAt(0);
+        Integer i= fFull.elementAt(0);
         assertTrue(i.intValue() == 1);
 
         try {
-            Integer j= (Integer)fFull.elementAt(fFull.size());
+            Integer j= fFull.elementAt(fFull.size());
         } catch (ArrayIndexOutOfBoundsException e) {
             return;
         }

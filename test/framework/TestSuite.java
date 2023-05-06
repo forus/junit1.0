@@ -17,16 +17,16 @@ import java.util.Vector;
  */
 public class TestSuite implements Test {
 
-    private Vector fTests= new Vector(10);
+    private Vector<Test> fTests= new Vector<>(10);
 
     /**
      * Runs the tests and collects their result in a TestResult.
      */
     public void run(TestResult result) {
-        for (Enumeration e= fTests.elements(); e.hasMoreElements(); ) {
+        for (Enumeration<Test> e = fTests.elements(); e.hasMoreElements(); ) {
               if (result.shouldStop() )
                   break;
-            Test test= (Test)e.nextElement();
+            Test test= e.nextElement();
             test.run(result);
         }
     }
@@ -43,8 +43,8 @@ public class TestSuite implements Test {
      */
     public int countTestCases() {
         int count= 0;
-        for (Enumeration e= fTests.elements(); e.hasMoreElements(); ) {
-            Test test= (Test)e.nextElement();
+        for (Enumeration<Test> e = fTests.elements(); e.hasMoreElements(); ) {
+            Test test= e.nextElement();
             count= count + test.countTestCases();
         }
         return count;
