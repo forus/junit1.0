@@ -75,7 +75,7 @@ public TestRunner(String title) {
 private void about ( ) {
     AboutDialog about = new AboutDialog(this);
     about.setModal(true);
-    about.move(200, 200);
+    about.setLocation(200, 200);
     about.setVisible(true);
 }
 /**
@@ -1082,14 +1082,7 @@ private void listSelectionChanged ( ) {
 public static void main(java.lang.String[] args) {
     try {
         test.ui.TestRunner aTestRunner = new test.ui.TestRunner();
-        try {
-            Class aCloserClass = Class.forName("uvm.abt.edit.WindowCloser");
-            Class parmTypes[] = { java.awt.Window.class };
-            Object parms[] = { aTestRunner };
-            java.lang.reflect.Constructor<? extends Object> aCtor = aCloserClass.getConstructor(parmTypes);
-            aCtor.newInstance(parms);
-        } catch (java.lang.Throwable exc) {};
-        aTestRunner.move(200, 200);
+        aTestRunner.setLocation(200, 200);
         aTestRunner.setVisible(true);
 
       if (args.length == 1) {
@@ -1310,7 +1303,7 @@ private void showErrorTrace ( ) {
     Throwable t= fExceptions.elementAt(index);
     if (fTraceFrame == null) {
         fTraceFrame = new TraceFrame();
-        fTraceFrame.move(100, 100);
+        fTraceFrame.setLocation(100, 100);
    }
     fTraceFrame.showTrace(t);
     fTraceFrame.setVisible(true);

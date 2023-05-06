@@ -212,13 +212,6 @@ public static void main(java.lang.String[] args) {
     try {
         test.ui.AboutDialog aAboutDialog = new test.ui.AboutDialog(new java.awt.Frame());
         aAboutDialog.setModal(true);
-        try {
-            Class aCloserClass = Class.forName("uvm.abt.edit.WindowCloser");
-            Class parmTypes[] = { java.awt.Window.class };
-            Object parms[] = { aAboutDialog };
-            java.lang.reflect.Constructor<? extends Object> aCtor = aCloserClass.getConstructor(parmTypes);
-            aCtor.newInstance(parms);
-        } catch (java.lang.Throwable exc) {};
         aAboutDialog.setVisible(true);
     } catch (Throwable exception) {
         System.err.println("Exception occurred in main() of java.awt.Dialog");
