@@ -13,7 +13,7 @@ import java.util.Vector;
  *
  * @see Test
  */
-public class TestResult extends Object {
+public class TestResult {
     protected Vector<TestFailure> fFailures;
     protected Vector<TestFailure> fErrors;
     protected int fRunTests;
@@ -21,7 +21,7 @@ public class TestResult extends Object {
 
 
     public TestResult() {
-        fFailures= new Vector<TestFailure>(10);
+        fFailures= new Vector<>(10);
         fErrors= new Vector<>(10);
         fRunTests= 0;
         fStop= false;

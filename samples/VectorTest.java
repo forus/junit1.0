@@ -11,7 +11,7 @@ import java.util.Vector;
  *
  */
 public class VectorTest extends TestCase {
-    protected Vector fEmpty;
+    protected Vector<Integer> fEmpty;
     protected Vector<Integer> fFull;
 
     public VectorTest(String name) {
@@ -19,24 +19,24 @@ public class VectorTest extends TestCase {
     }
 
     protected void setUp() {
-        fEmpty= new Vector();
+        fEmpty= new Vector<>();
         fFull= new Vector<>();
-        fFull.addElement(new Integer(1));
-        fFull.addElement(new Integer(2));
-        fFull.addElement(new Integer(3));
+        fFull.addElement(1);
+        fFull.addElement(2);
+        fFull.addElement(3);
     }
 
     public void testContains() {
-        assertTrue(fFull.contains(new Integer(1)));
-        assertTrue(!fEmpty.contains(new Integer(1)));
+        assertTrue(fFull.contains(1));
+        assertTrue(!fEmpty.contains(1));
     }
 
     public void testElementAt() {
         Integer i= fFull.elementAt(0);
-        assertTrue(i.intValue() == 1);
+        assertTrue(i == 1);
 
         try {
-            Integer j= fFull.elementAt(fFull.size());
+            fFull.elementAt(fFull.size());
         } catch (ArrayIndexOutOfBoundsException e) {
             return;
         }
@@ -44,9 +44,9 @@ public class VectorTest extends TestCase {
     }
 
     public void testClone() {
-        Vector clone= (Vector)fFull.clone();
+        Vector<Integer> clone= (Vector<Integer>)fFull.clone();
         assertTrue(clone.size() == fFull.size());
-        assertTrue(clone.contains(new Integer(1)));
+        assertTrue(clone.contains(1));
     }
 
     public void testRemoveAll() {
@@ -57,14 +57,14 @@ public class VectorTest extends TestCase {
     }
 
     public void testRemoveElement() {
-        fFull.removeElement(new Integer(3));
-        assertTrue(!fFull.contains(new Integer(3)) );
+        fFull.removeElement(3);
+        assertTrue(!fFull.contains(3) );
     }
 
     public void testCapacity() {
         int size= fFull.size();
         for (int i= 0; i < 100; i++)
-            fFull.addElement(new Integer(i));
+            fFull.addElement(i);
         assertTrue(fFull.size() == 100+size);
     }
 

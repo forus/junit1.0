@@ -17,7 +17,7 @@ import java.util.Vector;
  */
 public class TestSuite implements Test {
 
-    private Vector<Test> fTests= new Vector<>(10);
+    private final Vector<Test> fTests= new Vector<>(10);
 
     /**
      * Runs the tests and collects their result in a TestResult.

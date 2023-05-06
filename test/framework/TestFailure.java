@@ -6,7 +6,7 @@ package test.framework;
  * the caught exception.
  * @see TestResult
  */
-public class TestFailure extends Object {
+public class TestFailure {
     protected Test fFailedTest;
     protected Throwable fThrownException;
 
@@ -36,8 +36,6 @@ public class TestFailure extends Object {
      * Returns a short description of the failure.
      */
     public String toString() {
-        StringBuffer buffer= new StringBuffer();
-        buffer.append(fFailedTest+": "+fThrownException.getMessage());
-        return buffer.toString();
+        return fFailedTest + ": " + fThrownException.getMessage();
     }
 }

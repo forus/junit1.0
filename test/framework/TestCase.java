@@ -122,7 +122,7 @@ public abstract class TestCase implements Test {
      */
     protected void assertEquals(long expected, long actual) {
         if (expected != actual)
-            assertTrue(notEqualsMessage("", new Long(expected), new Long(actual)), false);
+            assertTrue(notEqualsMessage("", expected, actual), false);
     }
 
     /**
@@ -134,7 +134,7 @@ public abstract class TestCase implements Test {
      */
     protected void assertEquals(double expected, double actual, double delta) {
         if (Math.abs(expected - actual) > delta)
-            assertTrue(notEqualsMessage("", new Double(expected), new Double(actual)), false);
+            assertTrue(notEqualsMessage("", expected, actual), false);
     }
 
     /**
@@ -159,7 +159,7 @@ public abstract class TestCase implements Test {
      */
     protected void assertEquals(String message, long expected, long actual) {
         if (expected != actual)
-            assertTrue(notEqualsMessage(message + " ", new Long(expected), new Long(actual)), false);
+            assertTrue(notEqualsMessage(message + " ", expected, actual), false);
     }
 
     /**
@@ -172,7 +172,7 @@ public abstract class TestCase implements Test {
      */
     protected void assertEquals(String message, double expected, double actual, double delta) {
         if (Math.abs(expected - actual) > delta)
-            assertTrue(notEqualsMessage(message + " ", new Double(expected), new Double(actual)), false);
+            assertTrue(notEqualsMessage(message + " ", expected, actual), false);
     }
 
     protected String notEqualsMessage(String message, Object expected, Object actual) {
@@ -213,16 +213,16 @@ public abstract class TestCase implements Test {
      * @throws Throwable if any exception is thrown
      */
     protected void runTest() throws Throwable {
-        Method runMethod = null;
+        Method runMethod;
         try {
-            runMethod = getClass().getMethod(fName, new Class[0]);
+            runMethod = getClass().getMethod(fName);
         } catch (NoSuchMethodException e) {
             e.fillInStackTrace();
             throw e;
         }
 
         try {
-            runMethod.invoke(this, new Class[0]);
+            runMethod.invoke(this);
         } catch (InvocationTargetException e) {
             e.fillInStackTrace();
             throw e.getTargetException();
