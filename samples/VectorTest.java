@@ -82,16 +82,14 @@ public class VectorTest extends TestCase {
 
     public static Test activeSuite() {
         TestSuite suite= new TestSuite();
-        for (int i= 0; i < 100; i++) {
-            suite.addTest(new ActiveTest(new VectorTest("testContains"))
-            );
-            suite.addTest(new ActiveTest(new VectorTest("testClone")));
-            suite.addTest(new ActiveTest(new VectorTest("testRemoveAll")));
-            suite.addTest(new ActiveTest(new VectorTest("testRemoveElement")));
-            suite.addTest(new ActiveTest(new VectorTest("testElementAt")));
-            suite.addTest(new ActiveTest(new VectorTest("testCapacity")));
-        }
-        return suite;
+        suite.addTest(new ActiveTest(new VectorTest("testContains"))
+        );
+        suite.addTest(new ActiveTest(new VectorTest("testClone")));
+        suite.addTest(new ActiveTest(new VectorTest("testRemoveAll")));
+        suite.addTest(new ActiveTest(new VectorTest("testRemoveElement")));
+        suite.addTest(new ActiveTest(new VectorTest("testElementAt")));
+        suite.addTest(new ActiveTest(new VectorTest("testCapacity")));
+        return new RepeatedTest(suite, 100);
     }
 
     public static void main (String[] args) {
